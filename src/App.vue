@@ -1,16 +1,19 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 in CodeSandbox!" />
+  <div>
+  <UserInterface />
+  </div>
+  
 </template>
 
 <script>
-import HelloWorldVue from "./components/HelloWorld.vue";
+import UserInterface from './components/UserInterface.vue'
+
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    HelloWorld: HelloWorldVue,
-  },
-};
+    UserInterface
+  }
+}
 </script>
 
 <style>
