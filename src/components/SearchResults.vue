@@ -2,16 +2,19 @@
 	<div class='root'>
 		<p> Showing {{ filteredItems.length }} results for "{{ query }}" </p>
 		<ul>
-			<li v-for='title in filteredItems' :key='title.Page'>
-			              <a :href="item.Page" target="__blank">{{ item.Name }} </a>
+			<li v-for='item in filteredItems' :key='item.Page'>
+				<a :href="item.Page" target="__blank">{{ item.Name }} </a> 
+				
 			</li>
 		</ul>
 	</div>
 </template>
+
+
 <script>
 import { computed, onMounted } from 'vue'
 import titles from '../post-data.json'
-import { urlExists } from 'url-exists';
+//import { urlExists } from 'url-exists';
 export default {
 	props: {
 		query: String
@@ -21,14 +24,13 @@ export default {
 		onMounted(() => {
 			console.log('mounted')
 		})
-
-		 const filteredItems = computed(() => {
-      return titles.filter((s) => {
-        urlExists(s.Page, function (err, exists) {
-          s.Name.toLowerCase().includes(props.query.toLowerCase());
-        });
-      });
-    });
+		
+		
+		const filteredItems = computed(() => {
+			return titles.filter((s) =>
+				s.Name.toLowerCase().includes(props.query.toLowerCase())
+			);
+		});
 
 		return {
 			filteredItems
